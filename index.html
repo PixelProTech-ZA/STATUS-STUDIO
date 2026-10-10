@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PixelProTech Status Studio</title>
+<meta name="theme-color" content="#07060d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="icon-192.png" alt="PixelProTech mark" width="44" height="44">
+    <div>
+      <b>STATUS STUDIO</b>
+      <small>PixelProTech Solutions (Pty) Ltd</small>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab on" data-tab="studio">Studio</button>
+    <button class="tab" data-tab="queue">14-Day Queue</button>
+    <button class="tab" data-tab="log">Results</button>
+  </nav>
+</header>
+
+<main>
+<section id="studio" class="pane on">
+  <div class="studio-grid">
+    <div class="controls">
+      <div class="idrow">
+        <span class="lbl">POST ID</span>
+        <code id="postId">-</code>
+      </div>
+
+      <label>Date
+        <div class="row">
+          <input type="date" id="dt">
+          <button type="button" class="ghost" id="today">Today</button>
+        </div>
+      </label>
+
+      <label>Theme
+        <select id="th"></select>
+      </label>
+
+      <label>Headline <span class="count" id="wc">0/15</span>
+        <textarea id="hl" rows="3" maxlength="140"></textarea>
+      </label>
+
+      <label>Support line
+        <textarea id="sb" rows="2" maxlength="120"></textarea>
+      </label>
+
+      <div class="two">
+        <label>Call to action
+          <input type="text" id="ct" maxlength="40">
+        </label>
+        <label>Visual label
+          <input type="text" id="lb" maxlength="26">
+        </label>
+      </div>
+
+      <div class="two">
+        <label>Image A <small>(your own photo or screenshot)</small>
+          <input type="file" id="fa" accept="image/*">
+        </label>
+        <label>Image B <small>(optional, makes before/after)</small>
+          <input type="file" id="fb" accept="image/*">
+        </label>
+      </div>
+      <p class="hint">Images stay on this device and are not saved between sessions. Re-pick them when you reopen a Proof or Tool post. No learner or client faces.</p>
+
+      <div class="actions">
+        <button type="button" class="primary" id="dl">Download PNG</button>
+        <button type="button" id="dlsrc">PNG + source file</button>
+        <button type="button" class="ghost" id="share">Share</button>
+        <button type="button" class="ghost" id="reset">Reset copy</button>
+      </div>
+      <p class="hint" id="msg" aria-live="polite"></p>
+    </div>
+
+    <div class="preview">
+      <canvas id="cv" width="1080" height="1920" aria-label="Status preview"></canvas>
+      <p class="hint center">Preview is scaled. Export is 1080 x 1920.</p>
+    </div>
+  </div>
+</section>
+
+<section id="queue" class="pane">
+  <div class="qhead">
+    <label>Queue starts
+      <input type="date" id="qstart">
+    </label>
+    <button type="button" id="qgen">Fill missing days</button>
+    <button type="button" class="ghost" id="qrebuild">Rebuild unposted days</button>
+  </div>
+  <p class="hint">Mon Lab Check, Tue and Sun Tip, Wed Proof, Thu Free Tool, Fri Offer, Sat Built Here. Open a day to edit it, export it, then tick it once posted.</p>
+  <ul id="qlist" class="qlist"></ul>
+</section>
+
+<section id="log" class="pane">
+  <div class="qhead">
+    <button type="button" id="csv">Export CSV</button>
+  </div>
+  <div id="sum" class="sum"></div>
+  <p class="hint">Fill these from the Status viewer list after 24 hours. Count only viewers from schools and offices in "School/office views".</p>
+  <ul id="llist" class="qlist"></ul>
+</section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
